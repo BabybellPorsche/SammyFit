@@ -26,7 +26,6 @@
             color: #2c3e50;
             margin-bottom: 1.25rem;
         }
-        /* Tailored color and style improvements */
         h1 {
             font-size: 2.5rem;
             color: #2c3e50;
@@ -38,7 +37,6 @@
         .button:hover {
             background-color: #c0392b;
         }
-        /* Card-based workout container */
         .workout-card {
             background-color: #ffffff;
             border-radius: 12px;
@@ -66,43 +64,43 @@
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Push-ups</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="pushups-sets">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps" id="pushups-reps">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="pushups-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps" id="pushups-reps" min="1" max="50" step="1">
             </div>
         </div>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Dumbbell Bench Press</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="benchpress-sets">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="benchpress-reps">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="benchpress-weight">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="benchpress-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="benchpress-reps" min="1" max="50" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="benchpress-weight" min="0" max="100" step="0.5">
             </div>
         </div>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Dumbbell Shoulder Press</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="shoulderpress-sets">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="shoulderpress-reps">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="shoulderpress-weight">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="shoulderpress-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="shoulderpress-reps" min="1" max="50" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="shoulderpress-weight" min="0" max="100" step="0.5">
             </div>
         </div>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Dips (stoeldips)</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Sets" id="dips-sets">
-                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Reps" id="dips-reps">
+                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Sets" id="dips-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Reps" id="dips-reps" min="1" max="50" step="1">
             </div>
         </div>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Lateral Raises</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="lateral-sets">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="lateral-reps">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="lateral-weight">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="lateral-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="lateral-reps" min="1" max="50" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="lateral-weight" min="0" max="100" step="0.5">
             </div>
         </div>
 
@@ -126,43 +124,43 @@
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Assisted Pull-ups</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Sets" id="pullups-sets">
-                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Reps" id="pullups-reps">
+                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Sets" id="pullups-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Reps" id="pullups-reps" min="1" max="50" step="1">
             </div>
         </div>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Dumbbell Bent-Over Rows</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="rows-sets">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="rows-reps">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="rows-weight">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="rows-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="rows-reps" min="1" max="50" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="rows-weight" min="0" max="100" step="0.5">
             </div>
         </div>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Superman Holds</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="superman-sets">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Seconden" id="superman-time">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="superman-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Seconden" id="superman-time" min="1" max="120" step="1">
             </div>
         </div>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Dumbbell Bicep Curls</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="curls-sets">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="curls-reps">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="curls-weight">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="curls-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="curls-reps" min="1" max="50" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="curls-weight" min="0" max="100" step="0.5">
             </div>
         </div>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Hammer Curls</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="hammer-sets">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="hammer-reps">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="hammer-weight">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="hammer-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="hammer-reps" min="1" max="50" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="hammer-weight" min="0" max="100" step="0.5">
             </div>
         </div>
 
@@ -186,32 +184,32 @@
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Plank</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="plank-sets">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Seconden" id="plank-seconds">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="plank-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Seconden" id="plank-seconds" min="1" max="300" step="1">
             </div>
         </div>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Leg Raises</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="legraises-sets">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps" id="legraises-reps">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="legraises-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps" id="legraises-reps" min="1" max="50" step="1">
             </div>
         </div>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Russian Twists</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="twists-sets">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Rotaties" id="twists-reps">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="twists-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Rotaties" id="twists-reps" min="1" max="100" step="1">
             </div>
         </div>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Dead Bug</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="deadbug-sets">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Herhalingen per kant" id="deadbug-reps">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="deadbug-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Herhalingen per kant" id="deadbug-reps" min="1" max="50" step="1">
             </div>
         </div>
 
