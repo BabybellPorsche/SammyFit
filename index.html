@@ -43,6 +43,13 @@
             padding: 20px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
+        input, textarea {
+            transition: box-shadow 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            box-shadow: 0 0 5px #3498db;
+            outline: none;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -50,16 +57,16 @@
 <div class="max-w-lg mx-auto mt-10 p-6 workout-card">
     <h1 class="text-center font-bold mb-6">SammyFit</h1>
 
-    <!-- Dag selecteren -->
+    <!-- Day Selection -->
     <div class="flex justify-around mb-6">
-        <button class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600" onclick="showWorkout('dayA')">Dag A</button>
-        <button class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600" onclick="showWorkout('dayB')">Dag B</button>
-        <button class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600" onclick="showWorkout('dayC')">Dag C</button>
+        <button class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600" onclick="showWorkout('dayA')">Day A</button>
+        <button class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600" onclick="showWorkout('dayB')">Day B</button>
+        <button class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600" onclick="showWorkout('dayC')">Day C</button>
     </div>
 
-    <!-- Workouts voor Dag A -->
+    <!-- Workouts for Day A -->
     <div id="dayA" class="workout-container hidden">
-        <h2 class="text-xl font-semibold text-teal-600 mb-4">Dag A: Push (Borst, Schouders, Triceps)</h2>
+        <h2 class="text-xl font-semibold text-teal-600 mb-4">Day A: Push (Chest, Shoulders, Triceps)</h2>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Push-ups</h3>
@@ -88,7 +95,7 @@
         </div>
 
         <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Dips (stoeldips)</h3>
+            <h3 class="text-lg font-semibold mb-2">Dips</h3>
             <div class="flex gap-2">
                 <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Sets" id="dips-sets" min="1" max="20" step="1">
                 <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Reps" id="dips-reps" min="1" max="50" step="1">
@@ -105,21 +112,21 @@
         </div>
 
         <div class="mt-4">
-            <label for="dayA-date" class="block text-gray-600 mb-2">Datum:</label>
+            <label for="dayA-date" class="block text-gray-600 mb-2">Date:</label>
             <input type="date" id="dayA-date" class="w-full border p-2 rounded-md">
         </div>
 
         <div class="mt-4">
-            <label for="dayA-comments" class="block text-gray-600 mb-2">Opmerkingen:</label>
+            <label for="dayA-comments" class="block text-gray-600 mb-2">Comments:</label>
             <textarea id="dayA-comments" rows="4" class="w-full border p-2 rounded-md"></textarea>
         </div>
 
-        <button onclick="generateSummary('dayA')" class="w-full mt-6 button text-white px-4 py-2 rounded-full">Samenvatting Genereren</button>
+        <button onclick="generateSummary('dayA')" class="w-full mt-6 button text-white px-4 py-2 rounded-full">Generate Summary</button>
     </div>
 
-    <!-- Workouts voor Dag B -->
+    <!-- Workouts for Day B -->
     <div id="dayB" class="workout-container hidden">
-        <h2 class="text-xl font-semibold text-teal-600 mb-4">Dag B: Pull (Rug, Biceps)</h2>
+        <h2 class="text-xl font-semibold text-teal-600 mb-4">Day B: Pull (Back, Biceps)</h2>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Assisted Pull-ups</h3>
@@ -138,11 +145,12 @@
             </div>
         </div>
 
+        <!-- Replaced "Superman Holds" with "Hanging Leg Raises" -->
         <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Superman Holds</h3>
+            <h3 class="text-lg font-semibold mb-2">Hanging Leg Raises</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="superman-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Seconden" id="superman-time" min="1" max="120" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="legraises-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps" id="legraises-reps" min="1" max="50" step="1">
             </div>
         </div>
 
@@ -165,27 +173,27 @@
         </div>
 
         <div class="mt-4">
-            <label for="dayB-date" class="block text-gray-600 mb-2">Datum:</label>
+            <label for="dayB-date" class="block text-gray-600 mb-2">Date:</label>
             <input type="date" id="dayB-date" class="w-full border p-2 rounded-md">
         </div>
 
         <div class="mt-4">
-            <label for="dayB-comments" class="block text-gray-600 mb-2">Opmerkingen:</label>
+            <label for="dayB-comments" class="block text-gray-600 mb-2">Comments:</label>
             <textarea id="dayB-comments" rows="4" class="w-full border p-2 rounded-md"></textarea>
         </div>
 
-        <button onclick="generateSummary('dayB')" class="w-full mt-6 button text-white px-4 py-2 rounded-full">Samenvatting Genereren</button>
+        <button onclick="generateSummary('dayB')" class="w-full mt-6 button text-white px-4 py-2 rounded-full">Generate Summary</button>
     </div>
 
-    <!-- Workouts voor Dag C -->
+    <!-- Workouts for Day C -->
     <div id="dayC" class="workout-container hidden">
-        <h2 class="text-xl font-semibold text-teal-600 mb-4">Dag C: Core Focus</h2>
+        <h2 class="text-xl font-semibold text-teal-600 mb-4">Day C: Core Focus</h2>
 
         <div class="mb-4">
             <h3 class="text-lg font-semibold mb-2">Plank</h3>
             <div class="flex gap-2">
                 <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="plank-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Seconden" id="plank-seconds" min="1" max="300" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Seconds" id="plank-seconds" min="1" max="300" step="1">
             </div>
         </div>
 
@@ -197,11 +205,12 @@
             </div>
         </div>
 
+        <!-- Replaced "Russian Twists" with "Ab Roller" -->
         <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Russian Twists</h3>
+            <h3 class="text-lg font-semibold mb-2">Ab Roller</h3>
             <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="twists-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Rotaties" id="twists-reps" min="1" max="100" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="abroller-sets" min="1" max="20" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps" id="abroller-reps" min="1" max="50" step="1">
             </div>
         </div>
 
@@ -209,43 +218,38 @@
             <h3 class="text-lg font-semibold mb-2">Dead Bug</h3>
             <div class="flex gap-2">
                 <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="deadbug-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Herhalingen per kant" id="deadbug-reps" min="1" max="50" step="1">
+                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps per side" id="deadbug-reps" min="1" max="50" step="1">
             </div>
         </div>
 
         <div class="mt-4">
-            <label for="dayC-date" class="block text-gray-600 mb-2">Datum:</label>
+            <label for="dayC-date" class="block text-gray-600 mb-2">Date:</label>
             <input type="date" id="dayC-date" class="w-full border p-2 rounded-md">
         </div>
 
         <div class="mt-4">
-            <label for="dayC-comments" class="block text-gray-600 mb-2">Opmerkingen:</label>
+            <label for="dayC-comments" class="block text-gray-600 mb-2">Comments:</label>
             <textarea id="dayC-comments" rows="4" class="w-full border p-2 rounded-md"></textarea>
         </div>
 
-        <button onclick="generateSummary('dayC')" class="w-full mt-6 button text-white px-4 py-2 rounded-full">Samenvatting Genereren</button>
+        <button onclick="generateSummary('dayC')" class="w-full mt-6 button text-white px-4 py-2 rounded-full">Generate Summary</button>
     </div>
 
-    <!-- Samenvatting -->
+    <!-- Summary Section -->
     <div id="summary" class="hidden mt-6 bg-gray-50 p-6 rounded-lg shadow-lg summary">
-        <h2 class="text-xl font-bold mb-4">Samenvatting</h2>
+        <h2 class="text-xl font-bold mb-4">Summary</h2>
         <div id="summary-content"></div>
-        <button onclick="hideSummary()" class="w-full mt-4 button text-white px-4 py-2 rounded-full">Terug</button>
+        <button onclick="hideSummary()" class="w-full mt-4 button text-white px-4 py-2 rounded-full">Back</button>
     </div>
 
 </div>
 
 <script>
     function showWorkout(day) {
-        // Verberg alle workout containers
         document.querySelectorAll('.workout-container').forEach(function(container) {
             container.classList.add('hidden');
         });
-
-        // Toon de geselecteerde workout
         document.getElementById(day).classList.remove('hidden');
-
-        // Verberg de samenvatting als die zichtbaar is
         document.getElementById('summary').classList.add('hidden');
     }
 
@@ -259,8 +263,8 @@
                 <p><strong>Dumbbell Shoulder Press:</strong> ${document.getElementById('shoulderpress-sets').value} sets, ${document.getElementById('shoulderpress-reps').value} reps, ${document.getElementById('shoulderpress-weight').value} kg</p>
                 <p><strong>Dips:</strong> ${document.getElementById('dips-sets').value} sets, ${document.getElementById('dips-reps').value} reps</p>
                 <p><strong>Lateral Raises:</strong> ${document.getElementById('lateral-sets').value} sets, ${document.getElementById('lateral-reps').value} reps, ${document.getElementById('lateral-weight').value} kg</p>
-                <p><strong>Datum:</strong> ${document.getElementById('dayA-date').value}</p>
-                <p><strong>Opmerkingen:</strong> ${document.getElementById('dayA-comments').value}</p>
+                <p><strong>Date:</strong> ${document.getElementById('dayA-date').value}</p>
+                <p><strong>Comments:</strong> ${document.getElementById('dayA-comments').value}</p>
             `;
         }
 
@@ -268,23 +272,22 @@
             content = `
                 <p><strong>Assisted Pull-ups:</strong> ${document.getElementById('pullups-sets').value} sets, ${document.getElementById('pullups-reps').value} reps</p>
                 <p><strong>Dumbbell Bent-Over Rows:</strong> ${document.getElementById('rows-sets').value} sets, ${document.getElementById('rows-reps').value} reps, ${document.getElementById('rows-weight').value} kg</p>
-                <p><strong>Superman Holds:</strong> ${document.getElementById('superman-sets').value} sets, ${document.getElementById('superman-time').value} seconden</p>
+                <p><strong>Hanging Leg Raises:</strong> ${document.getElementById('legraises-sets').value} sets, ${document.getElementById('legraises-reps').value} reps</p>
                 <p><strong>Dumbbell Bicep Curls:</strong> ${document.getElementById('curls-sets').value} sets, ${document.getElementById('curls-reps').value} reps, ${document.getElementById('curls-weight').value} kg</p>
                 <p><strong>Hammer Curls:</strong> ${document.getElementById('hammer-sets').value} sets, ${document.getElementById('hammer-reps').value} reps, ${document.getElementById('hammer-weight').value} kg</p>
-                <p><strong>Datum:</strong> ${document.getElementById('dayB-date').value}</p>
-                <p><strong>Opmerkingen:</strong> ${document.getElementById('dayB-comments').value}</p>
+                <p><strong>Date:</strong> ${document.getElementById('dayB-date').value}</p>
+                <p><strong>Comments:</strong> ${document.getElementById('dayB-comments').value}</p>
             `;
         }
 
         if (day === 'dayC') {
             content = `
-                <p><strong>Plank:</strong> ${document.getElementById('plank-sets').value} sets, ${document.getElementById('plank-seconds').value} seconden</p>
+                <p><strong>Plank:</strong> ${document.getElementById('plank-sets').value} sets, ${document.getElementById('plank-seconds').value} seconds</p>
                 <p><strong>Leg Raises:</strong> ${document.getElementById('legraises-sets').value} sets, ${document.getElementById('legraises-reps').value} reps</p>
-                <p><strong>Russian Twists:</strong> ${document.getElementById('twists-sets').value} sets, ${document.getElementById('twists-reps').value} rotaties</p>
-                <p><strong>Dead Bug:</strong> ${document.getElementById('deadbug-sets').value} sets, ${document.getElementById('deadbug-reps').value} herhalingen per kant</p>
-                <p><strong>Bicycle Crunches:</strong> ${document.getElementById('bicycle-sets').value} sets, ${document.getElementById('bicycle-reps').value} herhalingen per kant</p>
-                <p><strong>Datum:</strong> ${document.getElementById('dayC-date').value}</p>
-                <p><strong>Opmerkingen:</strong> ${document.getElementById('dayC-comments').value}</p>
+                <p><strong>Ab Roller:</strong> ${document.getElementById('abroller-sets').value} sets, ${document.getElementById('abroller-reps').value} reps</p>
+                <p><strong>Dead Bug:</strong> ${document.getElementById('deadbug-sets').value} sets, ${document.getElementById('deadbug-reps').value} reps per side</p>
+                <p><strong>Date:</strong> ${document.getElementById('dayC-date').value}</p>
+                <p><strong>Comments:</strong> ${document.getElementById('dayC-comments').value}</p>
             `;
         }
 
