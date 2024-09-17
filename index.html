@@ -1,304 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Information -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SammyFit - Workout Tracker</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom Fonts and Design Tweaks */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f9;
-        }
-        .summary p {
-            margin-bottom: 0.75rem;
-        }
-        .summary {
-            padding: 20px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #f0f0f0, #ffffff);
-        }
-        .summary h2 {
-            font-size: 1.5rem;
-            color: #2c3e50;
-            margin-bottom: 1.25rem;
-        }
-        h1 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-        }
-        .button {
-            background-color: #e74c3c;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #c0392b;
-        }
-        .workout-card {
-            background-color: #ffffff;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        input, textarea {
-            transition: box-shadow 0.3s ease;
-        }
-        input:focus, textarea:focus {
-            box-shadow: 0 0 5px #3498db;
-            outline: none;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon (optional) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 text-gray-800">
 
-<div class="max-w-lg mx-auto mt-10 p-6 workout-card">
-    <h1 class="text-center font-bold mb-6">SammyFit</h1>
-
-    <!-- Day Selection -->
-    <div class="flex justify-around mb-6">
-        <button class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600" onclick="showWorkout('dayA')">Day A</button>
-        <button class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600" onclick="showWorkout('dayB')">Day B</button>
-        <button class="bg-teal-500 text-white px-6 py-2 rounded-full hover:bg-teal-600" onclick="showWorkout('dayC')">Day C</button>
+<!-- Header -->
+<header class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-6">
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <h1 class="text-3xl font-bold text-gray-800 text-center sm:text-left mb-4 sm:mb-0">SammyFit</h1>
+            <nav class="flex justify-center sm:justify-end">
+                <div class="inline-flex space-x-2">
+                    <button class="nav-button" onclick="showWorkout('dayA')">Day A</button>
+                    <button class="nav-button" onclick="showWorkout('dayB')">Day B</button>
+                    <button class="nav-button" onclick="showWorkout('dayC')">Day C</button>
+                </div>
+            </nav>
+        </div>
     </div>
+</header>
 
+<!-- Main Content -->
+<main class="container mx-auto mt-10 px-4">
     <!-- Workouts for Day A -->
     <div id="dayA" class="workout-container hidden">
-        <h2 class="text-xl font-semibold text-teal-600 mb-4">Day A: Push (Chest, Shoulders, Triceps)</h2>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Push-ups</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="pushups-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps" id="pushups-reps" min="1" max="50" step="1">
+        <div class="workout-card">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Day A: Push (Chest, Shoulders, Triceps)</h2>
+            <!-- Exercises -->
+            <div class="space-y-6">
+                <!-- Push-ups -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Push-ups</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Start in a plank position, lower your body until your chest nearly touches the floor, then push back up. Keep your body straight throughout the movement.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="pushups-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="pushups-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="pushups-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="pushups-reps" min="1">
+                        </div>
+                    </div>
+                </div>
+                <!-- Dumbbell Bench Press -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Dumbbell Bench Press</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Lie on a bench, hold dumbbells at chest level, then press them upward until your arms are fully extended. Lower back down with control.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="benchpress-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="benchpress-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="benchpress-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="benchpress-reps" min="1">
+                        </div>
+                        <div>
+                            <label for="benchpress-weight" class="block text-sm font-medium mb-1">Weight (kg)</label>
+                            <input type="number" class="input-field" id="benchpress-weight" min="0">
+                        </div>
+                    </div>
+                </div>
+                <!-- Dumbbell Shoulder Press -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Dumbbell Shoulder Press</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Sit or stand with dumbbells at shoulder height, palms facing forward. Press the weights upward until your arms are fully extended, then lower back down.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="shoulderpress-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="shoulderpress-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="shoulderpress-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="shoulderpress-reps" min="1">
+                        </div>
+                        <div>
+                            <label for="shoulderpress-weight" class="block text-sm font-medium mb-1">Weight (kg)</label>
+                            <input type="number" class="input-field" id="shoulderpress-weight" min="0">
+                        </div>
+                    </div>
+                </div>
+                <!-- Dips -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Dips</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Support yourself on parallel bars with straight arms. Lower your body by bending your elbows, then push back up to the starting position.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="dips-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="dips-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="dips-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="dips-reps" min="1">
+                        </div>
+                    </div>
+                </div>
+                <!-- Lateral Raises -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Lateral Raises</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Stand with dumbbells at your sides. Raise your arms out to the sides until they're parallel with the ground, then lower back down with control.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="lateral-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="lateral-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="lateral-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="lateral-reps" min="1">
+                        </div>
+                        <div>
+                            <label for="lateral-weight" class="block text-sm font-medium mb-1">Weight (kg)</label>
+                            <input type="number" class="input-field" id="lateral-weight" min="0">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Dumbbell Bench Press</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="benchpress-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="benchpress-reps" min="1" max="50" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="benchpress-weight" min="0" max="100" step="0.5">
+            <!-- Date and Comments -->
+            <div class="mt-8">
+                <label for="dayA-date" class="block text-gray-700 mb-2">Date:</label>
+                <input type="date" id="dayA-date" class="input-field">
             </div>
-        </div>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Dumbbell Shoulder Press</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="shoulderpress-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="shoulderpress-reps" min="1" max="50" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="shoulderpress-weight" min="0" max="100" step="0.5">
+            <div class="mt-4">
+                <label for="dayA-comments" class="block text-gray-700 mb-2">Comments:</label>
+                <textarea id="dayA-comments" rows="4" class="input-field"></textarea>
             </div>
+            <!-- Generate Summary Button -->
+            <button onclick="generateSummary('dayA')" class="button-primary w-full mt-6 text-white px-4 py-3 rounded-lg">Generate Summary</button>
         </div>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Dips</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Sets" id="dips-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Reps" id="dips-reps" min="1" max="50" step="1">
-            </div>
-        </div>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Lateral Raises</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="lateral-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="lateral-reps" min="1" max="50" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="lateral-weight" min="0" max="100" step="0.5">
-            </div>
-        </div>
-
-        <div class="mt-4">
-            <label for="dayA-date" class="block text-gray-600 mb-2">Date:</label>
-            <input type="date" id="dayA-date" class="w-full border p-2 rounded-md">
-        </div>
-
-        <div class="mt-4">
-            <label for="dayA-comments" class="block text-gray-600 mb-2">Comments:</label>
-            <textarea id="dayA-comments" rows="4" class="w-full border p-2 rounded-md"></textarea>
-        </div>
-
-        <button onclick="generateSummary('dayA')" class="w-full mt-6 button text-white px-4 py-2 rounded-full">Generate Summary</button>
     </div>
 
     <!-- Workouts for Day B -->
     <div id="dayB" class="workout-container hidden">
-        <h2 class="text-xl font-semibold text-teal-600 mb-4">Day B: Pull (Back, Biceps)</h2>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Assisted Pull-ups</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Sets" id="pullups-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/2" placeholder="Reps" id="pullups-reps" min="1" max="50" step="1">
+        <div class="workout-card">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Day B: Pull (Back, Biceps)</h2>
+            <!-- Exercises -->
+            <div class="space-y-6">
+                <!-- Assisted Pull-ups -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Assisted Pull-ups</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Use an assisted pull-up machine to help you perform pull-ups. Grasp the handles, and pull your body up until your chin clears the bar. Lower yourself back down with control.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="pullups-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="pullups-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="pullups-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="pullups-reps" min="1">
+                        </div>
+                    </div>
+                </div>
+                <!-- Dumbbell Bent-Over Rows -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Dumbbell Bent-Over Rows</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Hold a dumbbell in each hand, bend your knees slightly, and hinge at the hips to lower your torso until it's almost parallel to the floor. Keeping your back straight, pull the dumbbells to your lower ribcage, squeezing your shoulder blades together. Lower the dumbbells back to the starting position with control.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="rows-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="rows-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="rows-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="rows-reps" min="1">
+                        </div>
+                        <div>
+                            <label for="rows-weight" class="block text-sm font-medium mb-1">Weight (kg)</label>
+                            <input type="number" class="input-field" id="rows-weight" min="0">
+                        </div>
+                    </div>
+                </div>
+                <!-- Hanging Leg Raises -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Hanging Leg Raises</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Hang from a pull-up bar with straight legs. Raise your legs until they're parallel to the floor, then lower them back down with control.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="legraises-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="legraises-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="legraises-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="legraises-reps" min="1">
+                        </div>
+                    </div>
+                </div>
+                <!-- Face Pulls -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Face Pulls</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Attach a rope to a high pulley and grasp the handles with an overhand grip. Pull the rope towards your face, squeezing your shoulder blades together. Lower the rope back to the starting position with control.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="facepulls-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="facepulls-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="facepulls-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="facepulls-reps" min="1">
+                        </div>
+                        <div>
+                            <label for="facepulls-weight" class="block text-sm font-medium mb-1">Weight (kg)</label>
+                            <input type="number" class="input-field" id="facepulls-weight" min="0">
+                        </div>
+                    </div>
+                </div>
+                <!-- Dumbbell Bicep Curls -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Dumbbell Bicep Curls</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Stand with a dumbbell in each hand, palms facing forward. Keeping your elbows close to your sides, curl the weights up towards your shoulders. Lower the weights back down with control.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="curls-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="curls-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="curls-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="curls-reps" min="1">
+                        </div>
+                        <div>
+                            <label for="curls-weight" class="block text-sm font-medium mb-1">Weight (kg)</label>
+                            <input type="number" class="input-field" id="curls-weight" min="0">
+                        </div>
+                    </div>
+                </div>
+                <!-- Hammer Curls -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Hammer Curls</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Stand with a dumbbell in each hand, palms facing forward. Keeping your elbows close to your sides, curl the weights up towards your shoulders, rotating your palms so that they face inward at the top of the movement. Lower the weights back down with control.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="hammer-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="hammer-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="hammer-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="hammer-reps" min="1">
+                        </div>
+                        <div>
+                            <label for="hammer-weight" class="block text-sm font-medium mb-1">Weight (kg)</label>
+                            <input type="number" class="input-field" id="hammer-weight" min="0">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Dumbbell Bent-Over Rows</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="rows-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="rows-reps" min="1" max="50" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="rows-weight" min="0" max="100" step="0.5">
+            <!-- Date and Comments -->
+            <div class="mt-8">
+                <label for="dayB-date" class="block text-gray-700 mb-2">Date:</label>
+                <input type="date" id="dayB-date" class="input-field">
             </div>
-        </div>
-
-        <!-- Replaced "Superman Holds" with "Hanging Leg Raises" -->
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Hanging Leg Raises</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="legraises-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps" id="legraises-reps" min="1" max="50" step="1">
+            <div class="mt-4">
+                <label for="dayB-comments" class="block text-gray-700 mb-2">Comments:</label>
+                <textarea id="dayB-comments" rows="4" class="input-field"></textarea>
             </div>
+            <!-- Generate Summary Button -->
+            <button onclick="generateSummary('dayB')" class="button-primary w-full mt-6 text-white px-4 py-3 rounded-lg">Generate Summary</button>
         </div>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Dumbbell Bicep Curls</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="curls-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="curls-reps" min="1" max="50" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="curls-weight" min="0" max="100" step="0.5">
-            </div>
-        </div>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Hammer Curls</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Sets" id="hammer-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="Reps" id="hammer-reps" min="1" max="50" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/4" placeholder="KG" id="hammer-weight" min="0" max="100" step="0.5">
-            </div>
-        </div>
-
-        <div class="mt-4">
-            <label for="dayB-date" class="block text-gray-600 mb-2">Date:</label>
-            <input type="date" id="dayB-date" class="w-full border p-2 rounded-md">
-        </div>
-
-        <div class="mt-4">
-            <label for="dayB-comments" class="block text-gray-600 mb-2">Comments:</label>
-            <textarea id="dayB-comments" rows="4" class="w-full border p-2 rounded-md"></textarea>
-        </div>
-
-        <button onclick="generateSummary('dayB')" class="w-full mt-6 button text-white px-4 py-2 rounded-full">Generate Summary</button>
     </div>
 
     <!-- Workouts for Day C -->
     <div id="dayC" class="workout-container hidden">
-        <h2 class="text-xl font-semibold text-teal-600 mb-4">Day C: Core Focus</h2>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Plank</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="plank-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Seconds" id="plank-seconds" min="1" max="300" step="1">
+        <div class="workout-card">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Day C: Core Focus</h2>
+            <!-- Exercises -->
+            <div class="space-y-6">
+                <!-- Plank -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Plank</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Get into a forearm plank position with elbows directly under shoulders and legs extended behind you. Maintain a straight line from head to heels by engaging your core and avoiding sagging or piking your hips. Hold this position for the desired duration, focusing on steady breathing.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="plank-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="plank-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="plank-seconds" class="block text-sm font-medium mb-1">Seconds</label>
+                            <input type="number" class="input-field" id="plank-seconds" min="1">
+                        </div>
+                    </div>
+                </div>
+                <!-- Leg Raises -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Leg Raises</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Lie flat on your back with your legs extended. Raise your legs until they're perpendicular to the floor, then lower them back down with control.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="legraises-sets-core" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="legraises-sets-core" min="1">
+                        </div>
+                        <div>
+                            <label for="legraises-reps-core" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="legraises-reps-core" min="1">
+                        </div>
+                    </div>
+                </div>
+                <!-- Ab Roller -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Ab Roller</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Lie on your back with your knees bent and feet flat on the floor. Hold an ab roller above your chest. Roll the roller out, engaging your abs, then roll it back in with control.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="abroller-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="abroller-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="abroller-reps" class="block text-sm font-medium mb-1">Reps</label>
+                            <input type="number" class="input-field" id="abroller-reps" min="1">
+                        </div>
+                    </div>
+                </div>
+                <!-- Dead Bug -->
+                <div class="exercise-card">
+                    <h3 class="text-xl font-medium mb-2">Dead Bug</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        Lie on your back with your knees bent and feet flat on the floor. Extend your arms straight above you. Simultaneously raise your arms and legs off the floor, forming a diagonal line. Lower your arms and legs back down with control.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div>
+                            <label for="deadbug-sets" class="block text-sm font-medium mb-1">Sets</label>
+                            <input type="number" class="input-field" id="deadbug-sets" min="1">
+                        </div>
+                        <div>
+                            <label for="deadbug-reps" class="block text-sm font-medium mb-1">Reps per Side</label>
+                            <input type="number" class="input-field" id="deadbug-reps" min="1">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Leg Raises</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="legraises-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps" id="legraises-reps" min="1" max="50" step="1">
+            <!-- Date and Comments -->
+            <div class="mt-8">
+                <label for="dayC-date" class="block text-gray-700 mb-2">Date:</label>
+                <input type="date" id="dayC-date" class="input-field">
             </div>
-        </div>
-
-        <!-- Replaced "Russian Twists" with "Ab Roller" -->
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Ab Roller</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="abroller-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps" id="abroller-reps" min="1" max="50" step="1">
+            <div class="mt-4">
+                <label for="dayC-comments" class="block text-gray-700 mb-2">Comments:</label>
+                <textarea id="dayC-comments" rows="4" class="input-field"></textarea>
             </div>
+            <!-- Generate Summary Button -->
+            <button onclick="generateSummary('dayC')" class="button-primary w-full mt-6 text-white px-4 py-3 rounded-lg">Generate Summary</button>
         </div>
-
-        <div class="mb-4">
-            <h3 class="text-lg font-semibold mb-2">Dead Bug</h3>
-            <div class="flex gap-2">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Sets" id="deadbug-sets" min="1" max="20" step="1">
-                <input type="number" class="border p-2 rounded-md w-1/3" placeholder="Reps per side" id="deadbug-reps" min="1" max="50" step="1">
-            </div>
-        </div>
-
-        <div class="mt-4">
-            <label for="dayC-date" class="block text-gray-600 mb-2">Date:</label>
-            <input type="date" id="dayC-date" class="w-full border p-2 rounded-md">
-        </div>
-
-        <div class="mt-4">
-            <label for="dayC-comments" class="block text-gray-600 mb-2">Comments:</label>
-            <textarea id="dayC-comments" rows="4" class="w-full border p-2 rounded-md"></textarea>
-        </div>
-
-        <button onclick="generateSummary('dayC')" class="w-full mt-6 button text-white px-4 py-2 rounded-full">Generate Summary</button>
     </div>
+</main>
 
-    <!-- Summary Section -->
-    <div id="summary" class="hidden mt-6 bg-gray-50 p-6 rounded-lg shadow-lg summary">
-        <h2 class="text-xl font-bold mb-4">Summary</h2>
-        <div id="summary-content"></div>
-        <button onclick="hideSummary()" class="w-full mt-4 button text-white px-4 py-2 rounded-full">Back</button>
+<!-- Summary Section -->
+<section id="summary-section" class="hidden container mx-auto mt-10 px-4">
+    <div class="workout-card summary">
+        <h2 class="text-2xl font-bold mb-4">Summary</h2>
+        <div id="summary-content" class="space-y-4"></div>
+        <button onclick="hideSummary()" class="button-primary w-full mt-6 text-white px-4 py-3 rounded-lg">Back</button>
     </div>
+</section>
 
-</div>
+<!-- Footer -->
+<footer class="mt-10 py-6 bg-white">
+    <div class="container mx-auto text-center">
+        <p class="text-gray-600">&copy; 2023 SammyFit. All rights reserved.</p>
+    </div>
+</footer>
 
-<script>
-    function showWorkout(day) {
-        document.querySelectorAll('.workout-container').forEach(function(container) {
-            container.classList.add('hidden');
-        });
-        document.getElementById(day).classList.remove('hidden');
-        document.getElementById('summary').classList.add('hidden');
-    }
+<!-- Custom JavaScript -->
+<script src="script.js"></script>
 
-    function generateSummary(day) {
-        let content = '';
+</body>
+</html>
 
-        if (day === 'dayA') {
-            content = `
-                <p><strong>Push-ups:</strong> ${document.getElementById('pushups-sets').value} sets, ${document.getElementById('pushups-reps').value} reps</p>
-                <p><strong>Dumbbell Bench Press:</strong> ${document.getElementById('benchpress-sets').value} sets, ${document.getElementById('benchpress-reps').value} reps, ${document.getElementById('benchpress-weight').value} kg</p>
-                <p><strong>Dumbbell Shoulder Press:</strong> ${document.getElementById('shoulderpress-sets').value} sets, ${document.getElementById('shoulderpress-reps').value} reps, ${document.getElementById('shoulderpress-weight').value} kg</p>
-                <p><strong>Dips:</strong> ${document.getElementById('dips-sets').value} sets, ${document.getElementById('dips-reps').value} reps</p>
-                <p><strong>Lateral Raises:</strong> ${document.getElementById('lateral-sets').value} sets, ${document.getElementById('lateral-reps').value} reps, ${document.getElementById('lateral-weight').value} kg</p>
-                <p><strong>Date:</strong> ${document.getElementById('dayA-date').value}</p>
-                <p><strong>Comments:</strong> ${document.getElementById('dayA-comments').value}</p>
-            `;
-        }
-
-        if (day === 'dayB') {
-            content = `
-                <p><strong>Assisted Pull-ups:</strong> ${document.getElementById('pullups-sets').value} sets, ${document.getElementById('pullups-reps').value} reps</p>
-                <p><strong>Dumbbell Bent-Over Rows:</strong> ${document.getElementById('rows-sets').value} sets, ${document.getElementById('rows-reps').value} reps, ${document.getElementById('rows-weight').value} kg</p>
-                <p><strong>Hanging Leg Raises:</strong> ${document.getElementById('legraises-sets').value} sets, ${document.getElementById('legraises-reps').value} reps</p>
-                <p><strong>Dumbbell Bicep Curls:</strong> ${document.getElementById('curls-sets').value} sets, ${document.getElementById('curls-reps').value} reps, ${document.getElementById('curls-weight').value} kg</p>
-                <p><strong>Hammer Curls:</strong> ${document.getElementById('hammer-sets').value} sets, ${document.getElementById('hammer-reps').value} reps, ${document.getElementById('hammer-weight').value} kg</p>
-                <p><strong>Date:</strong> ${document.getElementById('dayB-date').value}</p>
-                <p><strong>Comments:</strong> ${document.getElementById('dayB-comments').value}</p>
-            `;
-        }
-
-        if (day === 'dayC') {
-            content = `
-                <p><strong>Plank:</strong> ${document.getElementById('plank-sets').value} sets, ${document.getElementById('plank-seconds').value} seconds</p>
-                <p><strong>Leg Raises:</strong> ${document.getElementById('legraises-sets').value} sets, ${document.getElementById('legraises-reps').value} reps</p>
-                <p><strong>Ab Roller:</strong> ${document.getElementById('abroller-sets').value} sets, ${document.getElementById('abroller-reps').value} reps</p>
-                <p><strong>Dead Bug:</strong> ${document.getElementById('deadbug-sets').value} sets, ${document.getElementById('deadbug-reps').value} reps per side</p>
-                <p><strong>Date:</strong> ${document.getElementById('dayC-date').value}</p>
-                <p><strong>Comments:</strong> ${document.getElementById('dayC-comments').value}</p>
-            `;
-        }
-
-        document.getElementById('summary-content').innerHTML = content;
-        document.getElementById('summary').classList.remove('hidden');
-    }
-
-    function hideSummary() {
-        document.getElementById('summary').classList.add('hidden');
-    }
-</script>
+<!-- Custom JavaScript -->
+<script src="script.js"></script>
 
 </body>
 </html>
